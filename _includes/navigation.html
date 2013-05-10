@@ -1,0 +1,24 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">{{ site.name }}</a>
+    <div class="nav-collapse collapse">
+      <ul class="nav navbar-nav">
+      {% for link in site.navigation %}
+        {% assign current = nil %}
+        {% assign currentLink = link.url | append:'index.html' %}
+        {% if page.url == link.url or page.url == currentLink %}
+          {% assign current = 'active' %}
+        {% endif %}
+        <li class="{{ current }}">
+          <a href="{{ link.url }}">{{ link.text }}</a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
